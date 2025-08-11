@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ary Market</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Css/style.css">
+    <link rel="stylesheet" href="Css/hero.css">
+    <link rel="stylesheet" href="Css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo-container">
+            <img src="Img/ary_logo.png" alt="Ary Logo" class="logo-image">
+            <div class="logo">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </div>
+        <div class="search-bar">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Buscar...">
+            <div class="search-suggestions"></div>
+        </div>
+        <div class="header-icons">
+            <div class="cart-icon-container">
+                <i class="fa-solid fa-cart-shopping" id="cart-icon"></i>
+                <span class="cart-counter" id="cart-counter">0</span>
+            </div>
+            <i class="fa-regular fa-user"></i>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <aside class="sidebar">
+            <h2>Categorías</h2>
+            <ul id="category-list">
+                </ul>
+        </aside>
+
+        <main class="content">
+            <section class="hero-section">
+                <div class="hero-grid">
+                    <div class="hero-main">
+                        <div class="hero-content">
+                            <h1>¡GRAN VENTA!</h1>
+                            <p>Auriculares inalámbricos con cancelación de ruido</p>
+                            <button class="hero-btn">Auriculares</button>
+                        </div>
+                        <div class="hero-image">
+                            <img src="Img/products/audifonos-rosa.png" alt="Auriculares en oferta">
+                        </div>
+                    </div>
+                    <div class="hero-secondary">
+                        <div class="promo-card">
+                            <div class="promo-content">
+                                <p>Hasta un <span>20%</span></p>
+                                <p>de descuento en Auriculares</p>
+                            </div>
+                        </div>
+                        <div class="promo-card">
+                            <div class="promo-content">
+                                <h3>Fujifilm Instax 11</h3>
+                                <button class="shop-now-btn">Comprar ahora</button>
+                            </div>
+                            <div class="promo-image">
+                                <img src="Img/products/camara-fuji.jpg" alt="Cámara Fujifilm">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="products-section">
+                <h2>Explorar productos</h2>
+                <div class="product-grid" id="product-grid">
+                    </div>
+            </section>
+        </main>
+    </div>
+
+    <div class="cart-modal" id="cart-modal">
+        <div class="cart-modal-content">
+            <button class="close-cart" id="close-cart-btn">&times;</button>
+            <h2>Tu Carrito</h2>
+            <div id="cart-items-container">
+                </div>
+            <div class="cart-summary">
+                <p>Total: <span id="cart-total-price">$0.00</span></p>
+                <button class="checkout-whatsapp-btn" id="checkout-whatsapp">
+                    <i class="fa-brands fa-whatsapp"></i> Finalizar Compra
+                </button>
+            </div>
+             <div class="cart-empty-message" id="cart-empty-message">
+                <p>Tu carrito está vacío.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Sobre Nosotros</h3>
+                <p>Somos una tienda en línea comprometida con ofrecer los mejores productos y servicios a nuestros clientes.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Enlaces Rápidos</h3>
+                <a href="#">Inicio</a>
+                <a href="#">Productos</a>
+                <a href="#">Ofertas</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <p>Teléfono: +53 53980510</p>
+                <p>Dirección: Calle Francisco Veagas #339 A entre Cucalambe y Rubi</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Ary Market. Todos los derechos reservados.</p>
+            <p>Desarrollado por HLab</p>
+        </div>
+    </footer>
+
+    <script src="Js/cart.js"></script>
+    <script src="Js/main.js"></script>
+</body>
+</html>

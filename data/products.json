@@ -1,0 +1,93 @@
+[
+  {
+    "nombre": "Auriculares Inalámbricos",
+    "categoria": "Electrónicos",
+    "precio": 79.99,
+    "descuento": 20,
+    "oferta": true,
+    "mas_vendido": true,
+    "soon": false,
+    "disponible": true,
+    "imagen": "audifonos-rosa.jpg",
+    "descripcion": "Auriculares con cancelación de ruido y alta fidelidad de sonido.",
+    "nuevo": false
+  },
+  {
+    "nombre": "Controlador de Juegos",
+    "categoria": "Gaming",
+    "precio": 59.90,
+    "descuento": 0,
+    "oferta": false,
+    "mas_vendido": false,
+    "soon": false,
+    "disponible": true,
+    "imagen": "control-rosa.jpg",
+    "descripcion": "Controlador ergonómico para largas sesiones de juego.",
+    "nuevo": true
+  },
+  {
+    "nombre": "Bolso de Mano Gris",
+    "categoria": "Accesorios",
+    "precio": 45.50,
+    "descuento": 0,
+    "oferta": false,
+    "mas_vendido": true,
+    "soon": false,
+    "disponible": true,
+    "imagen": "accesorio-bolso.jpg",
+    "descripcion": "Bolso elegante y espacioso para el uso diario.",
+    "nuevo": false
+  },
+  {
+    "nombre": "Silla de Diseño Naranja",
+    "categoria": "Muebles",
+    "precio": 120.00,
+    "descuento": 0,
+    "oferta": false,
+    "mas_vendido": false,
+    "soon": false,
+    "disponible": true,
+    "imagen": "silla-naranja.jpg",
+    "descripcion": "Silla moderna para dar un toque de color a tu espacio.",
+    "nuevo": false
+  },
+  {
+    "nombre": "Tetera Eléctrica Vintage",
+    "categoria": "Hogar",
+    "precio": 65.00,
+    "descuento": 30,
+    "oferta": true,
+    "mas_vendido": false,
+    "soon": false,
+    "disponible": true,
+    "imagen": "tetera-azul.jpg",
+    "descripcion": "Hierve agua con estilo con esta tetera de diseño retro.",
+    "nuevo": false
+  },
+  {
+    "nombre": "Cámara Fujifilm Instax 11",
+    "categoria": "Fotografía",
+    "precio": 99.99,
+    "descuento": 0,
+    "oferta": false,
+    "mas_vendido": true,
+    "soon": false,
+    "disponible": true,
+    "imagen": "camara-fuji.jpg",
+    "descripcion": "Captura momentos al instante con esta divertida cámara.",
+    "nuevo": true
+  },
+  {
+    "nombre": "Impacto For Woman",
+    "categoria": "Fragancias",
+    "precio": 15.28,
+    "descuento": 0,
+    "oferta": false,
+    "mas_vendido": false,
+    "soon": true,
+    "disponible": false,
+    "imagen": "perfume_impacto.jpg",
+    "descripcion": "Una fragancia audaz y moderna.",
+    "nuevo": true
+  }
+]
