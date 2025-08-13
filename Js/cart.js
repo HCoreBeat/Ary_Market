@@ -69,7 +69,7 @@ function updateCartUI() {
             totalPrice += itemPrice;
 
             // MODIFICACIÓN: Construye la ruta de la imagen aquí
-            const imagePath = `${item.imagen}`;
+            const imagePath = `Img/products/${item.imagen}`;
 
             const cartItemHTML = `
                 <div class="cart-item" data-id="${item.nombre}">
@@ -113,7 +113,25 @@ function generateCartWhatsAppMessage() {
         message += `*Cantidad:* ${item.quantity}\n\n`;
     });
 
-    message += `*Total del Pedido: $${totalPrice.toFixed(2)}*`;
+    message += `*Total del Pedido: ${totalPrice.toFixed(2)}*`;
+
+    // Get user profile from local storage
+    const savedProfile = localStorage.getItem('userProfile');
+    if (savedProfile) {
+        const userProfile = JSON.parse(savedProfile);
+        if (userProfile.fullName) {
+            message += `\n--- Datos del Cliente ---\n`;
+            message += `*Nombre:* ${userProfile.fullName}\n`;
+            if (userProfile.homeDelivery && userProfile.shippingAddress) {
+                message += `*Dirección de Envío:* ${userProfile.shippingAddress}\n`;
+                message += `*Envío a Domicilio:* Sí\n`;
+            } else if (userProfile.homeDelivery) {
+                message += `*Envío a Domicilio:* Sí (Dirección no proporcionada)\n`;
+            } else {
+                message += `*Envío a Domicilio:* No\n`;
+            }
+        }
+    }
 
     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');

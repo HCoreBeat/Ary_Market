@@ -1,0 +1,369 @@
+.notification-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(5px);
+    overflow: hidden;
+}
+
+/* Sparks effect */
+.notification-overlay::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at center, var(--color-accent1) 1px, transparent 1px),
+        radial-gradient(circle at center, var(--color-accent2) 1px, transparent 1px);
+    background-size: 30px 30px;
+    background-position: 0 0, 15px 15px;
+    animation: sparkle 4s linear infinite;
+    opacity: 0.3;
+}
+
+@keyframes sparkle {
+    0% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+}
+
+/* Disable scroll on body when notification is active */
+body.notification-open {
+    overflow: hidden;
+    padding-right: 15px; /* Compensate for scrollbar disappearance */
+}
+
+.notification-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.notification-overlay::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    background: var(--color-primary);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.5;
+    animation: ripple 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes ripple {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(20);
+        opacity: 0;
+    }
+}
+
+.notification-panel {
+    background: var(--color-white);
+    border-radius: 24px;
+    padding: 35px;
+    width: 90%;
+    max-width: 420px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+    transform: translateY(50px) scale(0.95);
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.notification-overlay.active .notification-panel {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+.notification-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+    animation: shimmer 2s infinite linear;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -420px 0;
+    }
+    100% {
+        background-position: 420px 0;
+    }
+}
+
+.notification-overlay.active .notification-panel {
+    transform: translateY(0);
+}
+
+.notification-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.notification-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    position: relative;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(133, 203, 204, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(133, 203, 204, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(133, 203, 204, 0);
+    }
+}
+
+.notification-icon i {
+    color: var(--color-white);
+    font-size: 24px;
+    animation: bell-ring 2s infinite;
+    transform-origin: top;
+}
+
+@keyframes bell-ring {
+    0%, 100% { transform: rotate(0); }
+    5%, 15% { transform: rotate(25deg); }
+    10%, 20% { transform: rotate(-25deg); }
+    25% { transform: rotate(0); }
+}
+
+.notification-title {
+    color: var(--color-text);
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 0;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: slide-up 0.5s 0.2s forwards;
+}
+
+@keyframes slide-up {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.notification-message {
+    color: var(--color-light-text);
+    margin: 15px 0 25px;
+    line-height: 1.6;
+    font-size: 1.1rem;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: slide-up 0.5s 0.3s forwards;
+}
+
+.notification-action {
+    display: flex;
+    justify-content: flex-end;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: slide-up 0.5s 0.4s forwards;
+}
+
+.notification-close {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    color: var(--color-white);
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.notification-close:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(133, 203, 204, 0.3);
+}
+
+.notification-close:active {
+    transform: translateY(0);
+}
+
+.notification-close::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+}
+
+.notification-close:focus:not(:active)::after {
+    animation: ripple-effect 1s ease-out;
+}
+
+@keyframes ripple-effect {
+    0% {
+        transform: scale(0, 0);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(30, 30);
+        opacity: 0;
+    }
+}
+
+.notification-badges-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.notification-badge {
+    position: relative;
+    background: linear-gradient(135deg, var(--color-accent1), var(--color-accent2));
+    color: var(--color-text);
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: badge-pop 0.5s 0.5s forwards;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.notification-badge::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background-size: 300% 300%;
+    border-radius: 22px;
+    z-index: -1;
+}
+
+.notification-badge::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: var(--color-white);
+    border-radius: 18px;
+    z-index: -1;
+}
+
+.notification-badge i {
+    margin-right: 8px;
+    font-size: 1rem;
+}
+
+.notification-badge.nuevo {
+    color: #2ecc71;
+}
+
+.notification-badge.oferta {
+    color: #e74c3c;
+}
+
+.notification-badge.evento {
+    color: #3498db;
+}
+
+/* Shine effect for badges */
+.notification-badge .shine {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+    );
+    animation: shine 3s infinite;
+}
+
+@keyframes shine {
+    0% {
+        left: -100%;
+    }
+    20% {
+        left: 100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+.notification-badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes badge-pop {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(10px);
+    }
+    70% {
+        transform: scale(1.1) translateY(-2px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}

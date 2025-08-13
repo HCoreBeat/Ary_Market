@@ -1,0 +1,58 @@
+/* Sparkle animation */
+@keyframes float-sparkle {
+    0% {
+        transform: scale(0) rotate(0deg) translate(-50%, -50%);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1) rotate(180deg) translate(100%, -100%);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(0) rotate(360deg) translate(200%, -200%);
+        opacity: 0;
+    }
+}
+
+.sparkle {
+    pointer-events: none;
+}
+
+/* Glowing effect for notification panel */
+.notification-panel {
+    position: relative;
+}
+
+.notification-panel::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background: linear-gradient(45deg, 
+        var(--color-primary),
+        var(--color-accent1)
+    );
+    background-size: 400% 400%;
+    border-radius: 26px;
+    z-index: -1;
+    filter: blur(10px);
+    opacity: 0.5;
+    animation: glow 3s ease-in-out infinite;
+}
+
+@keyframes glow {
+    0% {
+        background-position: 0% 50%;
+        opacity: 0.5;
+    }
+    50% {
+        background-position: 100% 50%;
+        opacity: 0.8;
+    }
+    100% {
+        background-position: 0% 50%;
+        opacity: 0.5;
+    }
+}

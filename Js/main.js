@@ -21,7 +21,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function displayProducts(productsToDisplay, category = 'Todos') {
         productGrid.innerHTML = '';
-        const filteredProducts = category === 'Todos' ? productsToDisplay : productsToDisplay.filter(p => p.categoria === category);
+        let filteredProducts;
+        
+        if (category === 'Todos') {
+            filteredProducts = productsToDisplay;
+        } else if (category === 'Próximamente') {
+            filteredProducts = productsToDisplay.filter(p => p.soon === true);
+        } else {
+            filteredProducts = productsToDisplay.filter(p => p.categoria === category);
+        }
 
         if (filteredProducts.length === 0) {
             productGrid.innerHTML = "<p>No hay productos que coincidan con la búsqueda.</p>";
@@ -39,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
             badgesHTML += '</div>';
 
             const productCard = document.createElement('div');
-            productCard.className = `product-card ${!product.disponible ? 'disabled product-card--soon' : ''}`;
+            productCard.className = `product-card ${!product.disponible ? 'disabled' : ''} ${product.soon ? 'coming-soon' : ''}`;
             productCard.dataset.id = product.nombre;
             // Asignar color de fondo de forma alternada
             const colorIndex = filteredProducts.indexOf(product) % 3 + 1;
@@ -73,14 +81,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         <button class="product-btn add-to-cart-btn">Añadir</button>
                         <button class="product-btn buy-now-btn">Comprar Ahora</button>
                     </div>
-                </div>` : `<div class="soon-badge">PRÓXIMAMENTE</div>`}
+                </div>` : ``}
             `;
             productGrid.appendChild(productCard);
         });
     }
 
     function displayCategories(products) {
-        const categories = ['Todos', ...new Set(products.map(p => p.categoria))];
+        const categories = ['Todos', ...new Set(products.map(p => p.categoria)), 'Próximamente'];
         categoryList.innerHTML = '';
         categories.forEach(category => {
             const li = document.createElement('li');
@@ -89,6 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
             a.textContent = category;
             a.dataset.category = category;
             if (category === 'Todos') a.classList.add('active');
+            if (category === 'Próximamente') a.classList.add('coming-soon');
             li.appendChild(a);
             categoryList.appendChild(li);
         });
@@ -183,7 +192,25 @@ document.addEventListener('DOMContentLoaded', () => {
             addToCart(productId, quantity, allProducts);
             alert(`${quantity} x ${productId} añadido al carrito.`);
         } else if (e.target.classList.contains('buy-now-btn')) {
-            const message = `¡Hola! Estoy interesado en comprar ${quantity} unidad(es) de *${productId}*.`;
+            let message = `¡Hola! Estoy interesado en comprar ${quantity} unidad(es) de *${productId}*.`;
+
+            // Get user profile from local storage
+            const savedProfile = localStorage.getItem('userProfile');
+            if (savedProfile) {
+                const userProfile = JSON.parse(savedProfile);
+                if (userProfile.fullName) {
+                    message += `\n\n--- Datos del Cliente ---\n`;
+                    message += `*Nombre:* ${userProfile.fullName}\n`;
+                    if (userProfile.homeDelivery && userProfile.shippingAddress) {
+                        message += `*Dirección de Envío:* ${userProfile.shippingAddress}\n`;
+                        message += `*Envío a Domicilio:* Sí\n`;
+                    } else if (userProfile.homeDelivery) {
+                        message += `*Envío a Domicilio:* Sí (Dirección no proporcionada)\n`;
+                    } else {
+                        message += `*Envío a Domicilio:* No\n`;
+                    }
+                }n            }
+
             const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
         }

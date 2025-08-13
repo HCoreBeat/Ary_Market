@@ -430,20 +430,7 @@ body {
 .badge.best-seller {
   background-color: var(--color-primary);
 }
-.soon-badge {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(0, 0, 0, 0.6);
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  font-weight: bold;
-}
-.product-card--soon .soon-badge {
-  display: block;
-}
+
 .product-card--soon .price-container,
 .product-card--soon .product-actions {
   display: none;
@@ -467,6 +454,14 @@ body {
   border-radius: 50%;
   font-size: 1.2rem;
   cursor: pointer;
+  color: var(--color-text); /* Added color */
+  transition: all 0.2s ease; /* Added transition */
+}
+
+.quantity-btn:hover {
+  background-color: var(--color-primary); /* Added hover effect */
+  color: var(--color-white); /* Added hover effect */
+  border-color: var(--color-primary); /* Added hover effect */
 }
 .quantity-input {
   width: 40px;
@@ -533,6 +528,8 @@ body {
   transition: transform 0.3s ease;
   display: flex;
   flex-direction: column;
+  border-radius: 15px 0 0 15px; /* Added border-radius */
+  padding-top: 1.5rem; /* Added padding-top */
 }
 .cart-modal.open .cart-modal-content {
   transform: translateX(0);
@@ -561,15 +558,25 @@ body {
   align-items: center;
   gap: 1rem;
   margin-bottom: 1rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--border-color);
+  padding: 1rem; /* Changed padding-bottom to padding */
+  border-bottom: none; /* Removed border-bottom */
+  border-radius: 10px; /* Added border-radius */
+  box-shadow: var(--shadow); /* Added box-shadow */
+  background-color: var(--color-bg); /* Added background-color */
+  transition: transform 0.2s ease; /* Added transition */
+}
+
+.cart-item:hover {
+  transform: translateY(-3px); /* Added hover effect */
 }
 .cart-item img {
   width: 70px;
   height: 70px;
   object-fit: contain;
-  border-radius: 8px;
-  background-color: var(--color-bg);
+  border-radius: 12px; /* Increased border-radius */
+  background-color: var(--color-white); /* Changed background-color */
+  padding: 5px; /* Added padding */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Added box-shadow */
 }
 .cart-item-info {
   flex-grow: 1;
@@ -603,6 +610,13 @@ body {
   cursor: pointer;
   font-size: 1rem;
   margin-left: 0.5rem;
+  padding: 0.5rem; /* Added padding */
+  border-radius: 5px; /* Added border-radius */
+  transition: background-color 0.2s ease; /* Added transition */
+}
+
+.remove-from-cart-btn:hover {
+  background-color: rgba(220, 53, 69, 0.1); /* Added hover effect */
 }
 .cart-summary {
   padding: 1.5rem;
@@ -629,6 +643,13 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3); /* Added box-shadow */
+  transition: all 0.2s ease; /* Added transition */
+}
+
+.checkout-whatsapp-btn:hover {
+  transform: translateY(-2px); /* Added hover effect */
+  box-shadow: 0 6px 12px rgba(37, 211, 102, 0.4); /* Added hover effect */
 }
 .cart-empty-message {
   text-align: center;
