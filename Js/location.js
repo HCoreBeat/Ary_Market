@@ -12,13 +12,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Función para mostrar el modal de ubicación
     function showLocationModal() {
         locationModal.classList.add('active');
-        document.body.style.overflow = 'hidden';
+    document.body.classList.add('no-scroll');
     }
 
     // Función para ocultar el modal de ubicación
     function hideLocationModal() {
         locationModal.classList.remove('active');
-        document.body.style.overflow = '';
+    document.body.classList.remove('no-scroll');
     }
 
     // Event listeners

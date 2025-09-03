@@ -34,6 +34,12 @@ body {
   flex-direction: column;
 }
 
+/* Prevent background scroll when modal is open */
+body.no-scroll {
+  height: 100vh;
+  overflow: hidden;
+}
+
 /* --- Header --- */
 .main-header {
   display: flex;

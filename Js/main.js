@@ -293,9 +293,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const cartModal = document.getElementById('cart-modal');
     const closeCartBtn = document.getElementById('close-cart-btn');
 
-    cartIcon.addEventListener('click', () => cartModal.classList.add('open'));
-    closeCartBtn.addEventListener('click', () => cartModal.classList.remove('open'));
-    cartModal.addEventListener('click', (e) => { if (e.target === cartModal) cartModal.classList.remove('open'); });
+    cartIcon.addEventListener('click', () => {
+        cartModal.classList.add('open');
+        document.body.classList.add('no-scroll');
+    });
+    closeCartBtn.addEventListener('click', () => {
+        cartModal.classList.remove('open');
+        document.body.classList.remove('no-scroll');
+    });
+    cartModal.addEventListener('click', (e) => { if (e.target === cartModal) { cartModal.classList.remove('open'); document.body.classList.remove('no-scroll'); } });
 
     document.getElementById('cart-items-container').addEventListener('click', (e) => {
         const target = e.target;

@@ -188,3 +188,7 @@ input:checked + .slider:before {
 .save-profile-btn:hover {
     background-color: #72b9ba; /* A slightly darker shade of --color-primary */
 }
+
+#user-profile-icon{
+    cursor: pointer;
+}

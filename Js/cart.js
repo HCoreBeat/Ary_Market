@@ -265,6 +265,12 @@ function generateCartWhatsAppMessage() {
     cart = [];
     saveCart();
     updateCartUI();
+    // Cerrar modal de carrito si está abierto y permitir scroll de fondo
+    const cartModalEl = document.getElementById('cart-modal');
+    if (cartModalEl) {
+        cartModalEl.classList.remove('open');
+        document.body.classList.remove('no-scroll');
+    }
 }
 
 // Limpiar historial expirado al cargar el script

@@ -17,6 +17,36 @@
     animation: pulse-dot 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
 }
 
+/* Mejor apariencia para el enlace de categoría 'Próximamente' */
+#category-list a.coming-soon {
+    background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+    color: var(--color-text);
+    border: 1px dashed rgba(0,0,0,0.06);
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: 999px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+#category-list a.coming-soon::after {
+    content: 'Próx.';
+    background: var(--color-accent2);
+    color: var(--color-white);
+    padding: 4px 8px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-left: 6px;
+}
+
+#category-list a.coming-soon:hover {
+    background: linear-gradient(90deg, rgba(0,0,0,0.02), rgba(0,0,0,0.03));
+    transform: translateY(-2px);
+}
+
 @keyframes pulse-dot {
     0% {
         transform: translateY(-50%) scale(0.8);
