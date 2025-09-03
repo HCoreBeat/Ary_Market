@@ -110,7 +110,28 @@
                 </div>
             </section>
             
-            <section class="products-section">
+                <!-- Controles de filtros y ordenamiento -->
+                <div class="products-controls" id="product-controls">
+                    <div class="sort-group">
+                            <label for="sort-select">Ordenar</label>
+                        <select id="sort-select">
+                            <option value="default">Por defecto</option>
+                                <option value="price-asc">Precio: menor → mayor</option>
+                                <option value="price-desc">Precio: mayor → menor</option>
+                                <option value="alpha-asc">A → Z</option>
+                                <option value="alpha-desc">Z → A</option>
+                        </select>
+                    </div>
+                    <div class="range-group" id="price-range-group">
+                            <label for="price-min" class="sr-only">Rango</label>
+                        <input type="number" id="price-min" placeholder="mín" min="0">
+                        <input type="number" id="price-max" placeholder="máx" min="0">
+                        <button id="apply-range-btn">Aplicar</button>
+                        <button id="clear-range-btn">Limpiar</button>
+                    </div>
+                </div>
+
+                <section class="products-section">
                 <h2>Explorar productos</h2>
                 <div class="product-grid" id="product-grid">
                     </div>

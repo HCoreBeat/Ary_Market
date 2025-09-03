@@ -1,5 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     let allProducts = [];
+    // Estado de filtros/orden
+    let currentSort = 'default';
+    let priceRange = { min: null, max: null };
+    let currentCategory = 'Todos';
     const productGrid = document.getElementById('product-grid');
     const categoryList = document.getElementById('category-list');
     const searchInput = document.querySelector('.search-bar input');
@@ -84,12 +88,47 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
             allProducts = await response.json();
             displayCategories(allProducts);
-            displayProducts(allProducts);
+            renderProducts(allProducts, currentCategory);
             updateCartUI();
         } catch (error) {
             console.error("Error al cargar los productos:", error);
             productGrid.innerHTML = "<p>No se pudieron cargar los productos.</p>";
         }
+    }
+
+    // Aplica filtros y orden sobre una lista base de productos y llama a displayProducts
+    function renderProducts(baseProducts, category = 'Todos') {
+        let result = Array.isArray(baseProducts) ? baseProducts.slice() : [];
+
+        // Filtrar por categoría (si el caller ya pasó un subset, mantenerlo)
+        if (category && category !== 'Todos') {
+            if (category === 'Próximamente') result = result.filter(p => p.soon === true);
+            else result = result.filter(p => p.categoria === category);
+        }
+
+        // Filtrar por rango de precio si aplica (usar precio con descuento)
+        if (priceRange.min != null || priceRange.max != null) {
+            result = result.filter(p => {
+                const unitPrice = p.precio * (1 - p.descuento / 100);
+                if (priceRange.min != null && unitPrice < priceRange.min) return false;
+                if (priceRange.max != null && unitPrice > priceRange.max) return false;
+                return true;
+            });
+        }
+
+        // Ordenar
+        if (currentSort === 'price-asc') {
+            result.sort((a,b) => (a.precio*(1-a.descuento/100)) - (b.precio*(1-b.descuento/100)));
+        } else if (currentSort === 'price-desc') {
+            result.sort((a,b) => (b.precio*(1-b.descuento/100)) - (a.precio*(1-a.descuento/100)));
+        } else if (currentSort === 'alpha-asc') {
+            result.sort((a,b) => a.nombre.localeCompare(b.nombre));
+        } else if (currentSort === 'alpha-desc') {
+            result.sort((a,b) => b.nombre.localeCompare(a.nombre));
+        }
+
+        // Llamar al render original pasando la lista ya procesada
+        displayProducts(result, 'Todos');
     }
 
     function displayProducts(productsToDisplay, category = 'Todos') {
@@ -243,9 +282,10 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         if (e.target.tagName === 'A') {
             const selectedCategory = e.target.dataset.category;
+            currentCategory = selectedCategory || 'Todos';
             document.querySelectorAll('#category-list a').forEach(a => a.classList.remove('active'));
             e.target.classList.add('active');
-            displayProducts(allProducts, selectedCategory);
+            renderProducts(allProducts, currentCategory);
         }
     });
 
@@ -322,6 +362,50 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     document.getElementById('checkout-whatsapp').addEventListener('click', generateCartWhatsAppMessage);
+
+    // Wire product controls
+    const sortSelect = document.getElementById('sort-select');
+    const priceMinInput = document.getElementById('price-min');
+    const priceMaxInput = document.getElementById('price-max');
+    const applyRangeBtn = document.getElementById('apply-range-btn');
+    const clearRangeBtn = document.getElementById('clear-range-btn');
+
+    if (sortSelect) {
+        sortSelect.addEventListener('change', (e) => {
+            currentSort = e.target.value;
+            renderProducts(allProducts, currentCategory);
+        });
+    }
+
+    if (applyRangeBtn) {
+        applyRangeBtn.addEventListener('click', () => {
+            const min = parseFloat(priceMinInput.value);
+            const max = parseFloat(priceMaxInput.value);
+            priceRange.min = isNaN(min) ? null : min;
+            priceRange.max = isNaN(max) ? null : max;
+            renderProducts(allProducts, currentCategory);
+        });
+    }
+
+    if (clearRangeBtn) {
+        clearRangeBtn.addEventListener('click', () => {
+            priceMinInput.value = '';
+            priceMaxInput.value = '';
+            priceRange = { min: null, max: null };
+            renderProducts(allProducts, currentCategory);
+        });
+    }
+
+    // UX: disable apply when both range fields are empty
+    function updateApplyState() {
+        if (!applyRangeBtn) return;
+        const emptyMin = priceMinInput.value.trim() === '';
+        const emptyMax = priceMaxInput.value.trim() === '';
+        applyRangeBtn.disabled = emptyMin && emptyMax;
+    }
+    if (priceMinInput) priceMinInput.addEventListener('input', updateApplyState);
+    if (priceMaxInput) priceMaxInput.addEventListener('input', updateApplyState);
+    updateApplyState();
 
     loadProducts();
 });
