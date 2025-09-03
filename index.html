@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="Css/style.css">
     <link rel="stylesheet" href="Css/hero.css">
     <link rel="stylesheet" href="Css/responsive.css">
-    <link rel="stylesheet" href="Css/notification.css">
-    <link rel="stylesheet" href="Css/notification-effects.css">
+    <link rel="stylesheet" href="Css/toast.css">
+    <link rel="stylesheet" href="Css/location.css">
     <link rel="stylesheet" href="Css/product-soon.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -38,6 +38,7 @@
                 <span class="cart-counter" id="cart-counter">0</span>
             </div>
             <i class="fa-regular fa-user" id="user-profile-icon"></i>
+            <i class="fa-solid fa-location-dot" id="location-icon"></i>
         </div>
     </header>
 
@@ -120,7 +121,7 @@
     <div class="cart-modal" id="cart-modal">
         <div class="cart-modal-content">
             <button class="close-cart" id="close-cart-btn">&times;</button>
-            <h2>Tu Carrito</h2>
+            <h2 class="fa-solid fa-cart-shopping"> Tu Carrito</h2>
             <div id="cart-items-container">
                 </div>
             <div class="cart-summary">
@@ -131,6 +132,61 @@
             </div>
              <div class="cart-empty-message" id="cart-empty-message">
                 <p>Tu carrito está vacío.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Ubicación -->
+    <div class="location-modal" id="location-modal">
+        <div class="location-panel">
+            <button class="close-location" id="close-location-btn">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="location-header">
+                <div class="location-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <h2 class="location-title">Nuestra Ubicación</h2>
+            </div>
+            <div class="location-content">
+                <div class="location-info">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div class="location-info-text">
+                        <h4>Dirección Principal</h4>
+                        <p>Calle Francisco Vegas #339 A</p>
+                        <p class="location-detail">Entre Cucalambe y Rubi</p>
+                        <span class="location-badge">Sede Central</span>
+                    </div>
+                </div>
+                <div class="location-info">
+                    <i class="fas fa-clock"></i>
+                    <div class="location-info-text">
+                        <h4>Horario de Atención</h4>
+                        <p>Lunes a Viernes</p>
+                        <p class="location-detail">9:00 AM - 6:00 PM</p>
+                        <p>Sábados</p>
+                        <p class="location-detail">10:00 AM - 2:00 PM</p>
+                        <span class="location-badge">Abierto Ahora</span>
+                    </div>
+                </div>
+                <div class="location-info">
+                    <i class="fas fa-headset"></i>
+                    <div class="location-info-text">
+                        <h4>Atención al Cliente</h4>
+                        <p>Teléfono y WhatsApp</p>
+                        <p class="location-detail">+53 53980510</p>
+                        <div class="location-buttons">
+                            <a href="tel:+5353980510" class="location-button">
+                                <i class="fas fa-phone"></i>
+                                Llamar
+                            </a>
+                            <a href="https://wa.me/5353980510" class="location-button whatsapp">
+                                <i class="fab fa-whatsapp"></i>
+                                WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -159,10 +215,11 @@
         </div>
     </footer>
 
+    <script src="Js/toast.js"></script>
     <script src="Js/cart.js"></script>
     <script src="Js/main.js"></script>
     <link rel="stylesheet" href="Css/user-profile.css">
-    <script src="Js/notification.js"></script>
     <script src="Js/user-profile.js"></script>
+    <script src="Js/location.js"></script>
 </body>
 </html>

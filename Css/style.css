@@ -519,7 +519,7 @@ body {
   transition: opacity 0.3s ease;
 }
 .cart-modal-content {
-  width: 400px;
+  width: 480px;
   max-width: 90%;
   height: 100%;
   background-color: var(--color-white);
@@ -548,7 +548,7 @@ body {
   cursor: pointer;
   color: var(--color-light-text);
 }
-#cart-items-container {
+.cart-items-wrapper {
   flex-grow: 1;
   overflow-y: auto;
   padding: 1rem;
@@ -558,36 +558,35 @@ body {
   align-items: center;
   gap: 1rem;
   margin-bottom: 1rem;
-  padding: 1rem; /* Changed padding-bottom to padding */
-  border-bottom: none; /* Removed border-bottom */
-  border-radius: 10px; /* Added border-radius */
-  box-shadow: var(--shadow); /* Added box-shadow */
-  background-color: var(--color-bg); /* Added background-color */
-  transition: transform 0.2s ease; /* Added transition */
+  padding: 0.8rem;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  background-color: var(--color-bg);
+  transition: transform 0.12s ease;
 }
 
 .cart-item:hover {
-  transform: translateY(-3px); /* Added hover effect */
+  transform: translateY(-3px);
 }
 .cart-item img {
   width: 70px;
   height: 70px;
-  object-fit: contain;
-  border-radius: 12px; /* Increased border-radius */
-  background-color: var(--color-white); /* Changed background-color */
-  padding: 5px; /* Added padding */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Added box-shadow */
+  object-fit: cover;
+  border-radius: 10px;
+  background-color: var(--color-white);
+  padding: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 .cart-item-info {
   flex-grow: 1;
 }
 .cart-item-info h4 {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 }
 .cart-item-info p {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: var(--color-primary);
-  font-weight: 600;
+  font-weight: 700;
 }
 .cart-item-actions {
   display: flex;
@@ -656,6 +655,86 @@ body {
   margin-top: 5rem;
   color: var(--color-light-text);
   display: none;
+}
+
+/* --- Historial de Compras --- */
+.cart-history-container {
+  padding: 0.8rem 1rem 0.8rem 1rem;
+  border-top: 1px solid var(--border-color);
+  background-color: #ffffff;
+  margin: 0.6rem 1rem 0.8rem 1rem;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.03);
+  max-height: 220px; /* No crecer más: scroll interno */
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.cart-history-container h3 {
+  margin: 0 0 0.6rem 0;
+  font-size: 1rem;
+  color: var(--color-text);
+}
+.purchase-history-entry {
+  padding: 0.6rem 0;
+  border-bottom: 1px dashed var(--border-color);
+}
+.purchase-history-entry:last-child {
+  border-bottom: none;
+}
+.purchase-history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+}
+.purchase-date {
+  font-size: 0.85rem;
+  color: var(--color-light-text);
+}
+.purchase-total {
+  font-weight: 700;
+  color: var(--color-primary);
+}
+.purchase-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+/* Ensure the cart items area keeps priority space and remains visible */
+.cart-items-wrapper {
+  flex: 1 1 auto; /* allow it to grow/shrink */
+  min-height: 120px; /* ensure some visible area even when history present */
+}
+.history-item-row {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+}
+.history-item-row img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+.history-item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.history-item-info strong {
+  font-size: 0.95rem;
+}
+.history-item-info div {
+  font-size: 0.85rem;
+  color: var(--color-light-text);
+}
+
+/* Make sure the cart items container used by JS matches */
+#cart-items-container.cart-items-wrapper {
+  padding: 1rem;
 }
 
 .search-suggestions {

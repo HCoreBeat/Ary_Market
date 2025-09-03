@@ -4,6 +4,79 @@ document.addEventListener('DOMContentLoaded', () => {
     const categoryList = document.getElementById('category-list');
     const searchInput = document.querySelector('.search-bar input');
     const suggestionsContainer = document.querySelector('.search-suggestions');
+    const heroSection = document.querySelector('.hero-main').parentElement;
+
+    // Cargar la configuración del hero
+    async function loadHeroConfig() {
+        try {
+            const response = await fetch('data/hero.json');
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            const heroData = await response.json();
+            updateHeroSection(heroData);
+        } catch (error) {
+            console.error("Error al cargar la configuración del hero:", error);
+        }
+    }
+
+    // Actualizar la sección del hero
+    function updateHeroSection(data) {
+        heroSection.innerHTML = '';
+        
+        // Hero Main
+        if (data.heroMain.enabled) {
+            const heroMain = document.createElement('div');
+            heroMain.className = 'hero-main';
+            heroMain.innerHTML = `
+                <div class="hero-content">
+                    <h1>${data.heroMain.title}</h1>
+                    <p>${data.heroMain.description}</p>
+                    <button class="hero-btn">${data.heroMain.buttonText}</button>
+                </div>
+                <div class="hero-image">
+                    <img src="${data.heroMain.image}" alt="${data.heroMain.imageAlt}">
+                </div>
+            `;
+            heroSection.appendChild(heroMain);
+        }
+
+        // Hero Secondary
+        if (data.heroSecondary.enabled) {
+            const heroSecondary = document.createElement('div');
+            heroSecondary.className = 'hero-secondary';
+
+            data.heroSecondary.promoCards.forEach(card => {
+                if (card.enabled) {
+                    const promoCard = document.createElement('div');
+                    promoCard.className = 'promo-card';
+
+                    if (card.type === 'discount') {
+                        promoCard.innerHTML = `
+                            <div class="promo-content">
+                                <p>Hasta un <span>${card.content.discountAmount}%</span></p>
+                                <p>${card.content.description}</p>
+                            </div>
+                        `;
+                    } else if (card.type === 'product') {
+                        promoCard.innerHTML = `
+                            <div class="promo-content">
+                                <h3>${card.content.title}</h3>
+                                <button class="shop-now-btn">${card.content.buttonText}</button>
+                            </div>
+                            <div class="promo-image">
+                                <img src="${card.content.image}" alt="${card.content.imageAlt}">
+                            </div>
+                        `;
+                    }
+                    heroSecondary.appendChild(promoCard);
+                }
+            });
+
+            heroSection.appendChild(heroSecondary);
+        }
+    }
+
+    // Cargar hero al iniciar
+    loadHeroConfig();
 
     async function loadProducts() {
         try {
@@ -190,7 +263,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (quantity > 1) quantityInput.value = --quantity;
         } else if (e.target.classList.contains('add-to-cart-btn')) {
             addToCart(productId, quantity, allProducts);
-            alert(`${quantity} x ${productId} añadido al carrito.`);
         } else if (e.target.classList.contains('buy-now-btn')) {
             let message = `¡Hola! Estoy interesado en comprar ${quantity} unidad(es) de *${productId}*.`;
 
@@ -209,7 +281,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     } else {
                         message += `*Envío a Domicilio:* No\n`;
                     }
-                }n            }
+                }
+            }
 
             const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
