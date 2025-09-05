@@ -13,22 +13,22 @@
     "nuevo": false
   },
   {
-    "nombre": "Controlador de Juegos",
+    "nombre": "Mando de Play 5",
     "categoria": "Gaming",
-    "precio": 59.90,
+    "precio": 59.9,
     "descuento": 0,
-    "oferta": false,
-    "mas_vendido": false,
-    "soon": false,
-    "disponible": true,
     "imagen": "control-rosa.jpg",
     "descripcion": "Controlador ergonómico para largas sesiones de juego.",
+    "oferta": true,
+    "mas_vendido": true,
+    "soon": false,
+    "disponible": true,
     "nuevo": true
   },
   {
     "nombre": "Bolso de Mano Gris",
     "categoria": "Accesorios",
-    "precio": 45.50,
+    "precio": 45.5,
     "descuento": 0,
     "oferta": false,
     "mas_vendido": true,
@@ -41,7 +41,7 @@
   {
     "nombre": "Silla de Diseño Naranja",
     "categoria": "Muebles",
-    "precio": 120.00,
+    "precio": 120,
     "descuento": 0,
     "oferta": false,
     "mas_vendido": false,
@@ -54,7 +54,7 @@
   {
     "nombre": "Tetera Eléctrica Vintage",
     "categoria": "Hogar",
-    "precio": 65.00,
+    "precio": 65,
     "descuento": 30,
     "oferta": true,
     "mas_vendido": false,
