@@ -96,5 +96,19 @@
     "descripcion": "Una fragancia audaz y moderna.",
     "nuevo": true,
     "id": "prod_1757164578889_cu3tgw8ie"
+  },
+  {
+    "id": "prod_1757166368839_w4hfhzyrq",
+    "nombre": "Test",
+    "categoria": "Test",
+    "precio": 10,
+    "descuento": 0,
+    "imagen": "1757166378227_meta.jpg",
+    "descripcion": "",
+    "oferta": false,
+    "mas_vendido": false,
+    "soon": true,
+    "disponible": false,
+    "nuevo": true
   }
 ]
