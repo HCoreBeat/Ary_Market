@@ -1,10 +1,12 @@
 {
   "id": 1,
-  "titulo": "¡Novedad en la tienda!",
-  "mensaje": "¡Nuevos accesorios disponibles! Echa un vistazo y encuentra tu próximo favorito. Ofertas por tiempo limitado.",
+  "titulo": "¡Testing de Notificacion!",
+  "mensaje": "Infromacion poco relevante de lo que se va a poner ahora!",
   "visible": true,
   "nuevo": true,
   "oferta": true,
   "evento": true,
-  "expira": "7/09/2025"
+  "expira": "2025-09-07",
+  "title": "¡Testing de Notificacion!",
+  "msg": "Infromacion poco relevante de lo que se va a poner ahora!"
 }
