@@ -1,33 +1,33 @@
 {
-    "heroMain": {
+  "heroMain": {
+    "enabled": true,
+    "title": "¡GRAN VENTA!",
+    "description": "Auriculares inalámbricos con cancelación de ruido",
+    "buttonText": "Auriculares",
+    "image": "Img/products/audifonos-rosa.png",
+    "imageAlt": "Auriculares en oferta"
+  },
+  "heroSecondary": {
+    "enabled": true,
+    "promoCards": [
+      {
         "enabled": true,
-        "title": "¡GRAN VENTA!",
-        "description": "Auriculares inalámbricos con cancelación de ruido",
-        "buttonText": "Auriculares",
-        "image": "Img/products/audifonos-rosa.png",
-        "imageAlt": "Auriculares en oferta"
-    },
-    "heroSecondary": {
+        "type": "discount",
+        "content": {
+          "discountAmount": "20",
+          "description": "de descuento en Auriculares"
+        }
+      },
+      {
         "enabled": true,
-        "promoCards": [
-            {
-                "enabled": true,
-                "type": "discount",
-                "content": {
-                    "discountAmount": "20",
-                    "description": "de descuento en Auriculares"
-                }
-            },
-            {
-                "enabled": true,
-                "type": "product",
-                "content": {
-                    "title": "Fujifilm Instax 11",
-                    "buttonText": "Comprar ahora",
-                    "image": "Img/products/camara-fuji.jpg",
-                    "imageAlt": "Cámara Fujifilm"
-                }
-            }
-        ]
-    }
+        "type": "product",
+        "content": {
+          "title": "Fujifilm Instax 11",
+          "buttonText": "Comprar ahora",
+          "image": "Img/products/camara-fuji.jpg",
+          "imageAlt": "Cámara Fujifilm"
+        }
+      }
+    ]
+  }
 }
