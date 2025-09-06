@@ -10,7 +10,8 @@
     "disponible": true,
     "imagen": "audifonos-rosa.jpg",
     "descripcion": "Auriculares con cancelación de ruido y alta fidelidad de sonido.",
-    "nuevo": false
+    "nuevo": false,
+    "id": "prod_1757164578889_avuhkungq"
   },
   {
     "nombre": "Mando de Play 5",
@@ -23,7 +24,8 @@
     "mas_vendido": true,
     "soon": false,
     "disponible": true,
-    "nuevo": true
+    "nuevo": true,
+    "id": "prod_1757164578889_b8d9oybnh"
   },
   {
     "nombre": "Bolso de Mano Gris",
@@ -36,7 +38,8 @@
     "disponible": true,
     "imagen": "accesorio-bolso.jpg",
     "descripcion": "Bolso elegante y espacioso para el uso diario.",
-    "nuevo": false
+    "nuevo": false,
+    "id": "prod_1757164578889_ku95l35hv"
   },
   {
     "nombre": "Silla de Diseño Naranja",
@@ -49,7 +52,8 @@
     "disponible": true,
     "imagen": "silla-naranja.jpg",
     "descripcion": "Silla moderna para dar un toque de color a tu espacio.",
-    "nuevo": false
+    "nuevo": false,
+    "id": "prod_1757164578889_54wuw3l3w"
   },
   {
     "nombre": "Tetera Eléctrica Vintage",
@@ -62,7 +66,8 @@
     "disponible": true,
     "imagen": "tetera-azul.jpg",
     "descripcion": "Hierve agua con estilo con esta tetera de diseño retro.",
-    "nuevo": false
+    "nuevo": false,
+    "id": "prod_1757164578889_0whyuio9o"
   },
   {
     "nombre": "Cámara Fujifilm Instax 11",
@@ -75,7 +80,8 @@
     "disponible": true,
     "imagen": "camara-fuji.jpg",
     "descripcion": "Captura momentos al instante con esta divertida cámara.",
-    "nuevo": true
+    "nuevo": true,
+    "id": "prod_1757164578889_nknzmgk1s"
   },
   {
     "nombre": "Impacto For Woman",
@@ -88,6 +94,21 @@
     "disponible": false,
     "imagen": "perfume_impacto.jpg",
     "descripcion": "Una fragancia audaz y moderna.",
+    "nuevo": true,
+    "id": "prod_1757164578889_cu3tgw8ie"
+  },
+  {
+    "id": "prod_1757164600715_pg3zk7m6o",
+    "nombre": "qwer",
+    "categoria": "test",
+    "precio": 10,
+    "descuento": 0,
+    "imagen": "1757164608675_meta.jpg",
+    "descripcion": "",
+    "oferta": false,
+    "mas_vendido": false,
+    "soon": true,
+    "disponible": false,
     "nuevo": true
   }
 ]
