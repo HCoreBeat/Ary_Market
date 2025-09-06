@@ -14,18 +14,18 @@
     "id": "prod_1757164578889_avuhkungq"
   },
   {
+    "id": "prod_1757164578889_b8d9oybnh",
     "nombre": "Mando de Play 5",
     "categoria": "Gaming",
     "precio": 59.9,
     "descuento": 0,
     "imagen": "control-rosa.jpg",
     "descripcion": "Controlador ergonómico para largas sesiones de juego.",
-    "oferta": true,
+    "oferta": false,
     "mas_vendido": true,
     "soon": false,
     "disponible": true,
-    "nuevo": true,
-    "id": "prod_1757164578889_b8d9oybnh"
+    "nuevo": true
   },
   {
     "nombre": "Bolso de Mano Gris",
