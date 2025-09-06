@@ -6,7 +6,7 @@
   "nuevo": true,
   "oferta": true,
   "evento": true,
-  "expira": "2025/09/07",
+  "expira": "2025-09-07",
   "title": "¡Testing de Notificacion!",
   "msg": "Infromacion poco relevante de lo que se va a poner ahora!"
 }
