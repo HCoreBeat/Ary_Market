@@ -1,11 +1,10 @@
-
 {
-    "id":1,
-    "titulo": "¡Novedad en la tienda!",
-    "mensaje": "¡Nuevos accesorios disponibles! Echa un vistazo y encuentra tu próximo favorito. Ofertas por tiempo limitado.",
-    "visible": true,
-    "nuevo": true,
-    "oferta": true,
-    "evento": true,
-    "expira": "23/08/2025"
+  "id": 1,
+  "titulo": "¡Novedad en la tienda!",
+  "mensaje": "¡Nuevos accesorios disponibles! Echa un vistazo y encuentra tu próximo favorito. Ofertas por tiempo limitado.",
+  "visible": true,
+  "nuevo": true,
+  "oferta": true,
+  "evento": true,
+  "expira": "23/08/2025"
 }
