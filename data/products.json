@@ -108,7 +108,7 @@
     "oferta": false,
     "mas_vendido": false,
     "soon": false,
-    "disponible": false,
+    "disponible": true,
     "nuevo": true
   }
 ]
