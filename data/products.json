@@ -96,19 +96,5 @@
     "descripcion": "Una fragancia audaz y moderna.",
     "nuevo": true,
     "id": "prod_1757164578889_cu3tgw8ie"
-  },
-  {
-    "id": "prod_1757164600715_pg3zk7m6o",
-    "nombre": "qwer",
-    "categoria": "test",
-    "precio": 10,
-    "descuento": 0,
-    "imagen": "1757164608675_meta.jpg",
-    "descripcion": "",
-    "oferta": false,
-    "mas_vendido": false,
-    "soon": true,
-    "disponible": false,
-    "nuevo": true
   }
 ]
