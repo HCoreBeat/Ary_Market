@@ -1,6 +1,6 @@
 {
   "heroMain": {
-    "enabled": true,
+    "enabled": false,
     "title": "¡GRAN VENTA!",
     "description": "Auriculares inalámbricos con cancelación de ruido",
     "buttonText": "Audifonos",
@@ -8,7 +8,7 @@
     "imageAlt": "Auriculares en oferta"
   },
   "heroSecondary": {
-    "enabled": true,
+    "enabled": false,
     "promoCards": [
       {
         "enabled": true,
