@@ -1,12 +1,12 @@
 {
-  "id": 1757270642740,
+  "id": 1766460176053,
   "titulo": "¡Testing !",
   "mensaje": "Infromacion poco relevante de lo que se va a poner ahora!",
   "visible": true,
-  "nuevo": true,
+  "nuevo": false,
   "oferta": true,
   "evento": true,
-  "expira": "10/09/2025",
+  "expira": "30/12/2025",
   "title": "¡Testing !",
   "msg": "Infromacion poco relevante de lo que se va a poner ahora!"
 }
